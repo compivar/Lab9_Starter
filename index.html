@@ -95,7 +95,14 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      let answer;
+      try {
+        answer = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (error) {
+        answer = '0';
+      } finally {
+        output.innerHTML = `Your answer is: ${answer}`;
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -173,7 +180,8 @@
     document.getElementById('trigger-global-error').addEventListener('click', () => {
       console.clear();
     });
+    
   </script>
 </body>
-
+<!-- Write your comments here -->
 </html>
