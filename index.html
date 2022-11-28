@@ -88,6 +88,19 @@
   </main>
 
   <script>
+    class DivisionError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "DivisionError";
+      }
+    }
+    function check(op, num) {
+      if(op === "/"){  
+        if(num === "0") {
+          throw new DivisionError("Dividing by 0");
+        }
+      }
+    }
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -98,8 +111,9 @@
       let answer;
       try {
         answer = eval(`${firstNum} ${operator} ${secondNum}`);
+        check(operator,secondNum);
       } catch (error) {
-        answer = '0';
+        answer = 'undefined';
       } finally {
         output.innerHTML = `Your answer is: ${answer}`;
       }
@@ -183,5 +197,5 @@
     
   </script>
 </body>
-<!-- Write your comments here -->
+<!-- check undefined -->
 </html>
