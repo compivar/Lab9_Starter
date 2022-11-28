@@ -88,6 +88,9 @@
   </main>
 
   <script>
+    window.addEventListener("error", (event) => {
+      console.log("Caught the Global Error.");
+    });
     class DivisionError extends Error {
       constructor(message) {
         super(message);
@@ -192,10 +195,10 @@
       firstCall();
     });
     document.getElementById('trigger-global-error').addEventListener('click', () => {
-      console.clear();
+      console.log(kaboom);
     });
     
   </script>
 </body>
-<!-- check undefined -->
+
 </html>
